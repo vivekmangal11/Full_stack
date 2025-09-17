@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BakeZone – Online Cake Delivery</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #fff8f8, #ffeaea, #fff);
+    }
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #ff4e50, #f9d423);
+    }
+    .navbar-brand, .nav-link {
+      color: white !important;
+      font-weight: 500;
+    }
+    .navbar-brand {
+      font-size: 1.7rem;
+    }
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+        url('https://images.unsplash.com/photo-1608198093002-ad4e0054841d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: white;
+      padding: 160px 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .hero .btn {
+      background: linear-gradient(90deg, #ff4e50, #f9d423);
+      border: none;
+      font-weight: bold;
+      padding: 12px 30px;
+      margin-top: 20px;
+    }
+    /* Cards */
+    .card-product {
+      transition: transform 0.2s ease-in-out;
+      border: none;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card-product:hover {
+      transform: scale(1.05);
+    }
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(90deg, #ff4e50, #f9d423);
+      color: #fff;
+      padding: 5px 8px;
+      font-size: 0.8rem;
+      border-radius: 5px;
+    }
+    .rating {
+      color: #ffc107;
+      font-size: 0.9rem;
+    }
+    /* Category */
+    .category-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    /* Reviews */
+    .review {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    /* Footer */
+    .footer {
+      background: linear-gradient(90deg, #f9d423, #ff4e50);
+      color: white;
+      padding: 50px 0;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .card-product {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card-product:hover {
+  transform: translateY(-5px);
+}
+
+/* ✅ Make all product images same size */
+.card-product img {
+  height: 220px;       /* Fixed height */
+  width: 100%;         /* Stretch full card width */
+  object-fit: cover;   /* Crop to fit nicely */
+}
+
+.rating {
+  color: #ff9800;
+  font-weight: bold;
+}
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('https://media.istockphoto.com/id/857309432/photo/various-homemade-pastry.webp?a=1&b=1&s=612x612&w=0&k=20&c=aZktpcUkHcmp_YcopwRWALZTPEU7KNLH8FdJNz0g3XY=') 
+              center/cover no-repeat;
+  padding: 160px 0;
+  color: white;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 1.2rem;
+}
+.hero .btn {
+  background: linear-gradient(90deg, #ff4e50, #f9d423);
+  border: none;
+  font-weight: bold;
+  padding: 12px 30px;
+  margin-top: 20px;
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Vivek's Bakery</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Cakes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Occasions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Cart (0)</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+  <div class="container text-center text-white">
+    <h1>Freshly Baked Cakes Delivered To Your Doorstep</h1>
+    <p>Celebrate every occasion with sweetness. Order your cake now!</p>
+    <a href="#" class="btn btn-lg text-white">Order Now</a>
+  </div>
+</section>
+
+  <!-- CATEGORIES -->
+  <section class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Shop By Category</h2>
+      <div class="row g-4">
+        <div class="col-md-3"><div class="category-card"><h5>Birthday Cakes</h5></div></div>
+        <div class="col-md-3"><div class="category-card"><h5>Designer Cakes</h5></div></div>
+        <div class="col-md-3"><div class="category-card"><h5>Photo Cakes</h5></div></div>
+        <div class="col-md-3"><div class="category-card"><h5>Cupcakes</h5></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+<!-- BEST SELLERS / CATALOG -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold mb-4 text-center">Our Delicious Cakes</h2>
+    <div class="row g-4">
+
+      <!-- Product 1 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://plus.unsplash.com/premium_photo-1715015439618-0732b5925875?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Q2hvY29sYXRlJTIwVHJ1ZmZsZSUyMENha2V8ZW58MHx8MHx8fDA%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Chocolate Truffle Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.9</span>
+              <span class="fw-bold">$25</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1757519740947-eef07a74c4ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8VmFuaWxsYSUyMENyZWFtJTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Vanilla Cream Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.8</span>
+              <span class="fw-bold">$22</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://plus.unsplash.com/premium_photo-1668703459956-b8f36cd2bfbc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8RnJ1aXQlMjAlMjYlMjBBbG1vbmQlMjBDYWtlfGVufDB8fDB8fHww" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Fruit & Almond Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.7</span>
+              <span class="fw-bold">$30</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1714386148315-2f0e3eebcd5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8UmVkJTIwVmVsdmV0JTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Red Velvet Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.6</span>
+              <span class="fw-bold">$28</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1595080622896-844ff207e639?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8QnV0dGVyc2NvdGNoJTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Butterscotch Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.5</span>
+              <span class="fw-bold">$20</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1629174113988-27f75189366d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8JTNFUGluZWFwcGxlJTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Pineapple Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.4</span>
+              <span class="fw-bold">$18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1646284807776-07d7be2fec71?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fENvZmZlZSUyMFdhbG51dCUyMENha2V8ZW58MHx8MHx8fDA%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Coffee Walnut Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.7</span>
+              <span class="fw-bold">$27</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1629174113988-27f75189366d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TWFuZ28lMjBEZWxpZ2h0JTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Mango Delight Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.6</span>
+              <span class="fw-bold">$24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1607257882338-70f7dd2ae344?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8T3JlbyUyMENob2NvJTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Oreo Choco Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.8</span>
+              <span class="fw-bold">$26</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1740731305128-100ebdb1fdc1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFN0cmF3YmVycnklMjBDaGVlc2VjYWtlfGVufDB8fDB8fHww" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Strawberry Cheesecake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.9</span>
+              <span class="fw-bold">$32</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://plus.unsplash.com/premium_photo-1663839331296-37171f2a2b03?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8UmFpbmJvdyUyMENlbGVicmF0aW9uJTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Rainbow Celebration Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.6</span>
+              <span class="fw-bold">$35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 12 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-product h-100">
+          <img src="https://images.unsplash.com/photo-1676021088023-1995f104af68?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Qmx1ZWJlcnJ5JTIwTXVmZmluJTIwQ2FrZXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top">
+          <div class="card-body">
+            <h6 class="fw-bold">Blueberry Muffin Cake</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="rating">★ 4.5</span>
+              <span class="fw-bold">$21</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-4">Why Choose BakeZone?</h2>
+      <div class="row g-4">
+        <div class="col-md-3"><div class="category-card"><h5>On-Time Delivery</h5><p>Never miss a special moment.</p></div></div>
+        <div class="col-md-3"><div class="category-card"><h5>Freshly Baked</h5><p>Prepared daily by expert bakers.</p></div></div>
+        <div class="col-md-3"><div class="category-card"><h5>100+ Designs</h5><p>Choose cakes for every occasion.</p></div></div>
+        <div class="col-md-3"><div class="category-card"><h5>Customer Trusted</h5><p>Rated ★ 4.9 by 10k+ users.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold mb-4 text-center">Happy Customers</h2>
+      <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="review">
+              <p>"The cake was fresh and delicious. Delivery was on time. Highly recommend BakeZone!"</p>
+              <h6>- Priya Sharma</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="review">
+              <p>"Amazing designs and flavors. My kids loved the photo cake!"</p>
+              <h6>- Rahul Verma</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="review">
+              <p>"Best online cake shop. Smooth order process and yummy cakes."</p>
+              <h6>- Sneha Kapoor</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-3">Subscribe to Our Newsletter</h2>
+      <p>Get updates on new cakes, discounts & special offers.</p>
+      <form class="d-flex justify-content-center">
+        <input type="email" class="form-control w-50" placeholder="Enter your email">
+        <button class="btn btn-warning ms-2">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-2 fw-bold">BakeZone – Spreading Sweetness Since 2025</p>
+      <p>Follow us on 
+        <a href="#">Facebook</a> | 
+        <a href="#">Instagram</a> | 
+        <a href="#">Twitter</a>
+      </p>
+      <p class="mt-3">&copy; 2025 BakeZone. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
